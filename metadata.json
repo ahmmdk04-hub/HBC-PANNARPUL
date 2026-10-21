@@ -1,0 +1,6 @@
+{
+  "name": "HBC PANARPUL — Construction Materials",
+  "description": "Premium Bengali e-commerce web application for selling high-grade construction materials (bricks, rod, cement, sand, paya) in Bangladesh with digital challan generation and complete admin panel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

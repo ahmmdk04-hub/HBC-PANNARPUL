@@ -1,0 +1,115 @@
+{
+  "entities": {
+    "product": {
+      "title": "Product",
+      "description": "Construction material product item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 200 },
+        "category": { "type": "string", "maxLength": 100 },
+        "price": { "type": "number" },
+        "unit": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "image": { "type": "string", "maxLength": 1000 },
+        "stock": { "type": "number" },
+        "isAvailable": { "type": "boolean" },
+        "isFeatured": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "category", "price", "unit"]
+    },
+    "order": {
+      "title": "Order",
+      "description": "Customer purchase order and challan record",
+      "type": "object",
+      "properties": {
+        "orderNumber": { "type": "string", "maxLength": 50 },
+        "customerName": { "type": "string", "maxLength": 120 },
+        "customerPhone": { "type": "string", "maxLength": 20 },
+        "district": { "type": "string", "maxLength": 80 },
+        "upazila": { "type": "string", "maxLength": 80 },
+        "villageArea": { "type": "string", "maxLength": 200 },
+        "detailedAddress": { "type": "string", "maxLength": 500 },
+        "customerNotes": { "type": "string", "maxLength": 1000 },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "deliveryCharge": { "type": "number" },
+        "grandTotal": { "type": "number" },
+        "status": {
+          "type": "string",
+          "enum": ["Pending", "Confirmed", "Processing", "Dispatched", "Delivered", "Cancelled"]
+        },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["orderNumber", "customerName", "customerPhone", "district", "upazila", "detailedAddress", "items", "grandTotal", "status"]
+    },
+    "category": {
+      "title": "Category",
+      "description": "Product category grouping",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "icon": { "type": "string", "maxLength": 50 },
+        "order": { "type": "number" }
+      },
+      "required": ["name"]
+    },
+    "banner": {
+      "title": "Banner",
+      "description": "Promotional bottom banner advertisement",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 200 },
+        "imageUrl": { "type": "string", "maxLength": 1000 },
+        "targetUrl": { "type": "string", "maxLength": 1000 },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "isActive": { "type": "boolean" },
+        "order": { "type": "number" }
+      },
+      "required": ["title", "imageUrl", "isActive"]
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Store configuration and founder details",
+      "type": "object",
+      "properties": {
+        "storeName": { "type": "string", "maxLength": 100 },
+        "founderName": { "type": "string", "maxLength": 150 },
+        "founderPhone": { "type": "string", "maxLength": 30 },
+        "founderPhoto": { "type": "string", "maxLength": 1000 },
+        "founderTitle": { "type": "string", "maxLength": 150 },
+        "helpline": { "type": "string", "maxLength": 50 },
+        "officeAddress": { "type": "string", "maxLength": 300 },
+        "defaultDeliveryFee": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "product",
+      "description": "Catalog of construction materials"
+    },
+    "/orders/{orderId}": {
+      "schema": "order",
+      "description": "Customer order records and challans"
+    },
+    "/categories/{categoryId}": {
+      "schema": "category",
+      "description": "Product categories catalog"
+    },
+    "/banners/{bannerId}": {
+      "schema": "banner",
+      "description": "Bottom banner advertisements"
+    },
+    "/settings/{settingId}": {
+      "schema": "settings",
+      "description": "Global application configuration and founder details"
+    }
+  }
+}
